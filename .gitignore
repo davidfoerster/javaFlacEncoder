@@ -1,0 +1,21 @@
+/out/
+
+### OS generated files
+.DS_Store
+.DS_Store?
+._*
+*~
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*.orig
+*.rej
+*.swp
+*.log
+
+### IDE files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/

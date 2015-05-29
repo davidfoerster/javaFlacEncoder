@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="javaFlacEncoder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/javaFlacEncoder_jar</output-path>
+    <root id="archive" name="javaFlacEncoder.jar">
+      <element id="module-output" name="javaFlacEncoder" />
+    </root>
+  </artifact>
+</component>
