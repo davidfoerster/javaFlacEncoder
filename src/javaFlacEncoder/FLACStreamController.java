@@ -109,6 +109,7 @@ public class FLACStreamController {
         this.writeDataToOutput(streamInfo);
       }
       flacStreamIsOpen = false;
+      out.close();
     } finally {
        streamLock.unlock();
     }

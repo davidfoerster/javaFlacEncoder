@@ -98,4 +98,6 @@ public interface FLACOutputStream {
    * @return current write position.
    */
   public long getPos();
+
+  public void close() throws IOException;
 }
