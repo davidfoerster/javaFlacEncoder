@@ -398,6 +398,7 @@ public class FLACEncoder {
       int maxBlock = streamConfig.getMaxBlockSize();
       if(unfilledRequest == null)
         unfilledRequest = prepareRequest(maxBlock,channels);
+      assert unfilledRequest != null;
       int remaining = count;
       int offset = 0;
       while(remaining > 0) {
@@ -678,7 +679,8 @@ public class FLACEncoder {
       int[] block = ber.samples;
       available += block.length/channels;
     }
-    available += unfilledRequest.count;
+    if (unfilledRequest != null)
+      available += unfilledRequest.count;
     return available;
   }
 
