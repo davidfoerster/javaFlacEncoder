@@ -92,8 +92,8 @@ public class FLAC_FileEncoder {
 
   private void adjustConfigurations(AudioFormat format) {
     int sampleRate = (int)format.getSampleRate();
-    int sampleSize = (int)format.getSampleSizeInBits();
-    int channels = (int)format.getChannels();
+    int sampleSize = format.getSampleSizeInBits();
+    int channels = format.getChannels();
     sc.setSampleRate(sampleRate);
     sc.setBitsPerSample(sampleSize);
     sc.setChannelCount(channels);

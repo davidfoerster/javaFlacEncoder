@@ -75,7 +75,6 @@ public class FLAC_ConsoleFileEncoder {
 
   private File inputFile = null;
   private File outputFile = null;
-  private boolean canEncode = false;
   private boolean useThreads = true;
   int threadCount = 2;
   EncodingConfiguration encodingConfig;
@@ -88,7 +87,7 @@ public class FLAC_ConsoleFileEncoder {
    * @param args Arguments for encoding.
    */
   public static void main(String[] args) {
-    FLAC_ConsoleFileEncoder cfe = new FLAC_ConsoleFileEncoder(args);
+    new FLAC_ConsoleFileEncoder(args);
   }
 
   /**
@@ -158,9 +157,6 @@ public class FLAC_ConsoleFileEncoder {
     "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301\n"+
     "USA\n";
     System.out.println(copyrightNotice);
-  }
-  private void printVersion() {
-
   }
   private void printUsage() {
     printCopyright();
@@ -337,10 +333,10 @@ public class FLAC_ConsoleFileEncoder {
     return result;
   }
 
-  private void fileEncoderTest() {
+  /*private void fileEncoderTest() {
     File fIn = new File("input.wav");
     File fOut = new File("fileEncoderTest.flac");
     FLAC_FileEncoder enc = new FLAC_FileEncoder();
     enc.encode(fIn, fOut);
-  }
+  }*/
 }

@@ -30,8 +30,8 @@ public class RiceEncoder {
    * increments of 10 */
   public static int DEBUG_LEV = 0;
 
-  private static final int POSITIVE = 0;
-  private static final int NEGATIVE = 1;
+  //private static final int POSITIVE = 0;
+  //private static final int NEGATIVE = 1;
   private static final int STOP_BIT = 0xFFFFFFFF;
   private static final int UNARY_BIT = 0;
 
@@ -162,13 +162,11 @@ public class RiceEncoder {
         nextToEncode = 0;
       }
       //write unary upper bits:
-      int count = 0;
       while(upperBits > 0) {
         int tempVal = (upperBits > 32) ? 32:upperBits;//can only write 32 bits at a time.
         dataToEncode[nextToEncode] = UNARY_BIT;
         bitsToEncode[nextToEncode++] = tempVal;
         upperBits -= tempVal;
-        count++;
       }
       dataToEncode[nextToEncode] = (value&maskParam) | stopbit ;
       bitsToEncode[nextToEncode++] = bitParam+1;

@@ -60,7 +60,7 @@ public class AudioStreamEncoder {
     int channels = format.getChannels();
     boolean bigEndian = format.isBigEndian();
     boolean isSigned = format.getEncoding() == AudioFormat.Encoding.PCM_SIGNED;
-    byte[] samplesIn = new byte[(int)maxRead];
+    byte[] samplesIn = new byte[maxRead];
     int samplesRead;
     int framesRead;
     int[] sampleData = new int[maxRead*channels/frameSize];

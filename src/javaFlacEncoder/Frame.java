@@ -80,6 +80,7 @@ public class Frame {
    * @param sc StreamConfiguration to use for encoding with this frame.
    */
   public Frame(StreamConfiguration sc) {
+    this();
     lastEncodeSize = 0;
     channels = sc.getChannelCount();
     this.sc = sc;
@@ -167,24 +168,24 @@ public class Frame {
     EncodingConfiguration.ChannelConfig chConf = ec.getChannelConfig();
     if(chConf == EncodingConfiguration.ChannelConfig.INDEPENDENT) {
       data = new EncodedElement(100,0);
-      int size = encodeIndependent(samples, count, start, skip, data, 0);
+      encodeIndependent(samples, count, start, skip, data, 0);
       //int size = encodeMidSide(samples, count, start, skip, data, 0);
     }
     else if(chConf == EncodingConfiguration.ChannelConfig.LEFT_SIDE) {
       data = new EncodedElement(100,0);
-      int size = encodeLeftSide(samples, count, start, skip, data, 0);
+      encodeLeftSide(samples, count, start, skip, data, 0);
     }
     else if(chConf == EncodingConfiguration.ChannelConfig.MID_SIDE) {
       data = new EncodedElement(100,0);
-      int size = Frame.encodeMidSide(samples, count, start, skip, data, 0, this);
+      Frame.encodeMidSide(samples, count, start, skip, data, 0, this);
     }
     else if(chConf == EncodingConfiguration.ChannelConfig.RIGHT_SIDE) {
       data = new EncodedElement(100,0);
-      int size = encodeRightSide(samples, count, start, skip, data, 0);
+      encodeRightSide(samples, count, start, skip, data, 0);
     }
     else if(chConf == EncodingConfiguration.ChannelConfig.ENCODER_CHOICE) {
       data = new EncodedElement(100,0);
-      int size = allChannelDecorrelation(samples, count, start, skip, data, 0, this);
+      allChannelDecorrelation(samples, count, start, skip, data, 0, this);
       chConf = ec.channelConfig;
       ec.channelConfig = EncodingConfiguration.ChannelConfig.ENCODER_CHOICE;
     }
@@ -451,7 +452,7 @@ public class Frame {
         //int fixedSize = fixedSubframe.getEncodedSize();
         lpcSubframe.encodeSamples(samples, count, start, skip,
             offset, channelBitsPerSample);
-        int lpcSize = (int)lpcSubframe.estimatedSize();
+        int lpcSize = lpcSubframe.estimatedSize();
         if(verbatimSize < lpcSize && verbatimSize < fixedSize) {//verbatim
           System.err.println("Running verbatim");
           smallest = new EncodedElement(verbatimSize,offset);
@@ -704,27 +705,6 @@ public class Frame {
       //midSide[2*i+1] = 0;
     }
     return f.encodeIndependent(midSide, count, start, skip, data, offset);
-  }
-  private static double getVariance(ChannelData chan, double mean) {
-    double variance = 0;
-    int[] samples = chan.getSamples();
-    for(int i = 0; i < chan.getCount(); i++) {
-      double val = mean-(double)samples[i];
-      variance += val*val;
-    }
-    return variance;
-  }
-  private static double getVariance(double mean, int[] samples, int count, int start,
-    int increment) {
-    double var = 0;
-
-    for(int i = 0; i < count; i++) {
-      int loc = start+i*increment;
-      double val = (mean-samples[loc]);
-      var += val*val;
-    }
-
-    return var;
   }
   private static int allChannelDecorrelation(int[] samples, int count, int start, int skip,
       EncodedElement data, int offset, Frame f) {

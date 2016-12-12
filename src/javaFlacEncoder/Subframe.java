@@ -59,6 +59,7 @@ public abstract class Subframe {
    * @param sc StreamConfiguration to use for encoding.
    */
   public Subframe(StreamConfiguration sc) {
+    this();
     this.sc = sc;
     ec = new EncodingConfiguration();
   }
