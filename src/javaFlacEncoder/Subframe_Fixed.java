@@ -191,7 +191,7 @@ public class Subframe_Fixed extends Subframe {
         lowOrderBits[i] = sampleSize;
       //lowOrderBits[i]++;//DOUBLE CHECK VALIDITY OF THIS. Decreases the bits needed, but "shouldn't"
       //bits[i] = (int)(Math.log(sum[i])/Math.log(10))*(count-1)+sampleSize*i;
-      bits[i] = (int)(lowOrderBits[i]*(count-i)+sampleSize*i+1);
+      bits[i] = lowOrderBits[i]*(count-i)+sampleSize*i+1;
       order = (bits[i] < bits[order]) ? i:order;
     }
 

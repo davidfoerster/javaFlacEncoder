@@ -46,7 +46,7 @@ public class FrameThread implements Runnable {
    * and destination.
    */
   public FrameThread(Frame f, BlockThreadManager manager) {
-    super();
+    this();
     if(f == null)
       System.err.println("Frame is null. Error.");
     frame = f;

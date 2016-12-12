@@ -90,9 +90,6 @@ public class FLACEncoder {
   /* Stores unfilled BlockEncodeRequest(not ready for queue, unless ending stream */
   volatile private BlockEncodeRequest unfilledRequest = null;
 
-  /* Stores count of inter-frame samples in unfinishedBlock */
-  volatile private int unfinishedBlockUsed = 0;
-
   /* Frame object used to encode when not using threads */
   volatile Frame frame = null;
 

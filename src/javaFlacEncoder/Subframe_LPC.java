@@ -27,23 +27,9 @@ package javaFlacEncoder;
  */
 public class Subframe_LPC extends Subframe {
   public static long totalTime = 0;
-  private class PartialResult {
-    int[] samples;
-    int start;
-    int increment;
-    int count;
-    int subframeSampleSize;
-
-    int lpcOrder;
-    int lowOrderBits;
-    int totalBits;
-    int precision;
-    int lastCount;
-  }
     
   /* Following values used frequently, let's calculate just once */
   private static final double LOGE_2 = Math.log(2);
-  private static final double SQRT_2 = Math.sqrt(2);
 
   /** Maximum LPC order that is supported by this subframe */
   public static final int MAX_LPC_ORDER = 32;
@@ -202,7 +188,7 @@ public class Subframe_LPC extends Subframe {
         _increment, result, _frameSampleSize, _lowOrderBits,
         _precision, _shift, _quantizedCoeffs, _errors, _lpcOrder,rice);
     int totalBits = result.getTotalBits();
-    this.lastEncodedSize = (int)totalBits;
+    this.lastEncodedSize = totalBits;
 
     if(DEBUG_LEV > 0) {
       System.err.println("lastencodedSize set: "+this.lastEncodedSize);
@@ -221,7 +207,7 @@ public class Subframe_LPC extends Subframe {
     dataEle.offset = result.offset;
     dataEle.previous = result.previous;
     dataEle.next = result.next;
-    this.lastEncodedSize = (int)totalBits;
+    this.lastEncodedSize = totalBits;
 
     return count;
   }
@@ -241,7 +227,7 @@ public class Subframe_LPC extends Subframe {
     dataEle.addInt(shift, 5);
     //System.err.println("shift:order:type::"+shift+":"+order+":"+encodedType);
     for(int i = 1; i <= order; i++) {
-      int val = (int)-coeff[i];
+      int val = -coeff[i];
       dataEle.addInt(val, precision);
     }
   }

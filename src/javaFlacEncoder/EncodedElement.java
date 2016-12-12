@@ -970,29 +970,4 @@ public class EncodedElement {
       dest[destIndex++] = (byte)(inVal);
     }
   }
-
-  private static final int uRSHFT2(int value,int count) {
-    if(count >= 32)
-      return 0;
-    else
-      return value >>> count;
-  }
-  private static long uRSHFT_L(long value, int count) {
-    if(count >= 64)
-      return 0;
-    else
-      return value >>> count;
-  }
-  private static final int lSHFT2(int value, int count) {
-    if(count >= 32)
-      return 0;
-    else
-      return (value << count);
-  }
-  private static final long lSHFT_L(long value, int count) {
-    if(count >= 64)
-      return 0;
-    else
-      return value << count;
-  }
 }
