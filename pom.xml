@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>co.kaleidok</groupId>
+  <artifactId>javaFlacEncoder</artifactId>
+  <version>0.3.2-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>javaFlacEncoder</name>
+  <url>http://javaflacencoder.sourceforge.net</url>
+  <description>
+    javaFlacEncoder is a pure java implementation of a FLAC encoder library.
+    It is designed to allow third-party java applications to enable flac
+    encoding without resorting to use of JNI or scripted file conversions.
+    Additionally, a basic console wav->flac encoding tool is included as part
+    of this package.
+  </description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License, Version 2.1</name>
+      <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1-standalone.html</url>
+    </license>
+  </licenses>
+
+  <issueManagement>
+    <system>Sourceforge</system>
+    <url>http://sourceforge.net/p/javaflacencoder/bugs/</url>
+  </issueManagement>
+
+  <developers>
+    <developer>
+      <id>http://sourceforge.net/u/plwww/profile/</id>
+      <name>Preston Lacey</name>
+      <timezone>+9</timezone>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/davidfoerster/javaFlacEncoder.git</connection>
+    <developerConnection>scm:git:git@github.com:davidfoerster/javaFlacEncoder.git</developerConnection>
+    <url>https://github.com/davidfoerster/javaFlacEncoder</url>
+  </scm>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
